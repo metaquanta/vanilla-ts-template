@@ -1,0 +1,55 @@
+{
+  "name": "@metaquanta/template",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://metaquanta.com",
+  "license": "AGPL-3.0",
+  "repository": "github:metaquanta/",
+  "scripts": {
+    "build": "babel src --out-dir public --ignore 'src/**/*.test.js' --extensions '.ts' --copy-files",
+    "build:watch": "babel --watch src --out-dir public --ignore 'src/**/*.test.js' --extensions '.ts' --copy-files",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch --preserveWatchOutput",
+    "lint": "eslint --ext=ts,js src",
+    "format": "prettier --write *",
+    "serve": "es-dev-server --compatibility none --event-stream false --node-resolve --root-dir public/ --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "npm-run-all --parallel build:watch typecheck:watch serve",
+    "precommit": "npm-run-all -s typecheck lint format test build"
+  },
+  "jest": {
+    "transform": {
+      ".ts": "ts-jest"
+    },
+    "testRegex": "\\.test\\.ts$",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/plugin-transform-typescript": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.5",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "babel-plugin-add-import-extension": "^1.4.3",
+    "es-dev-server": "^1.57.3",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "jest": "^26.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "^4.0.0"
+  }
+}
